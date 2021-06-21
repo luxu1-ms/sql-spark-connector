@@ -48,6 +48,7 @@ object BulkCopyUtils extends Logging {
 
         logDebug("savePartition:Entered")
         val conn = createConnectionFactory(options)()
+        conn.setClientInfo("Application Name","Spark MsSQL Connector Executor")
         conn.setAutoCommit(false)
         conn.setTransactionIsolation(options.isolationLevel)
         var committed = false

@@ -54,6 +54,7 @@ class DefaultSource extends JdbcRelationProvider with Logging {
                     rawDf: DataFrame): BaseRelation = {
         val options = new SQLServerBulkJdbcOptions(parameters)
         val conn = createConnectionFactory(options)()
+        conn.setClientInfo("Application Name","Spark MsSQL Connector Driver")
         val df = repartitionDataFrame(rawDf, options)
 
         logInfo(s"JDBC Driver major/mior version " +
