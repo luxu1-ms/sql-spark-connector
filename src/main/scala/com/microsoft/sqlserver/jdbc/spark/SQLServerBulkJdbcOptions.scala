@@ -31,6 +31,8 @@ class SQLServerBulkJdbcOptions(val params: CaseInsensitiveMap[String])
   // params input in memory
   override val parameters = params
 
+  val applicationName = params.getOrElse("applicationName", "Spark MsSQL Connector")
+
   val dbtable = params.getOrElse("dbtable", null)
 
   val user = params.getOrElse("user", null)
